@@ -3,6 +3,7 @@ const path = require('path');
 const xml2js = require('xml2js');
 const crypto = require('crypto');
 const moment = require('moment');
+const gzip = require('./gzip');
 
 const commentoData = {
   version: 1,
@@ -34,14 +35,18 @@ function parseExport(file) {
 }
 
 async function writeExport(file, data) {
+  const filePath = path.resolve(__dirname, file);
+
   return new Promise((resolve, reject) => {
-    fs.writeFile(path.resolve(__dirname, file), data, (err) => {
+    fs.writeFile(filePath, data, (err) => {
       if (err) {
         reject(err);
         return;
       }
 
       resolve();
+
+      gzip(filePath);
     });
   });
 }
