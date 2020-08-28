@@ -2,5 +2,15 @@
   "dependencies": {
     "moment": "^2.27.0",
     "xml2js": "^0.4.23"
+  },
+  "name": "wordpress-2-commento",
+  "version": "1.0.0",
+  "description": "Converts wordpress comments to commento format",
+  "main": "index.js",
+  "repository": "https://github.com/anbraten/wordpress-2-commento.git",
+  "author": "Anton Bracke",
+  "license": "MIT",
+  "scripts": {
+    "convert": "yarn && node index.js"
   }
 }
